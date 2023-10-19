@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Survey Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: blue;
+      
+    }
+    
+    .container {
+            max-height: 800px;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 40px;
+            background: #f5f5f5;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    select {
+      height: 40px;
+    }
+    .checkbox-group label {
+      display: inline-block;
+      margin-right: 10px;
+    }
+    .btn-group {
+      text-align: center;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #007BFF;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button.reset {
+      background-color: #DC3545;
+    }
+  </style>
+</head>
+<body>
+    <center><h1 style="color:#fff">Customer Survey Form</h1></center>
+  <div class="container">
+    <form id="surveyForm">
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" placeholder="Enter First Name" required>
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" placeholder="Enter Last Name" required>
+      </div>
+      <div class="form-group">
+        <label for="dob">Date of Birth</label>
+        <input type="date" id="dob" placeholder="Enter Date of Birth" required>
+      </div>
+      <div class="form-group">
+        <label for="country">Country</label>
+        <select id="country" required>
+            <option value="USA">India</option>
+            <option value="USA">Nepal</option>
+            <option value="USA">BanglaDesh</option>
+            <option value="USA">Bhutan</option>
+          <option value="USA">USA</option>
+          <option value="Canada">Canada</option>
+          <option value="UK">UK</option>
+        
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Gender</label>
+        <div class="radio-group">
+          <label for="male"><input type="checkbox" id="male"> Male</label>
+          <label for="female"><input type="checkbox" id="female">Female</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="profession">Profession</label>
+        <input type="text" id="profession" placeholder="Enter profession" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter Email" required>
+      </div>
+      <div class="form-group">
+        <label for="mobile">Mobile Number</label>
+        <input type="tel" id="mobile"  placeholder="Enter Mobile Number" required>
+      </div>
+      <div class="btn-group">
+        <button type="button" class="reset" onclick="resetForm()">Reset</button>
+        <button type="button" onclick="submitForm()">Submit</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function resetForm() {
+      document.getElementById("surveyForm").reset();
+    }
+
+    function submitForm() {
+      const firstName = document.getElementById("firstName").value;
+      const lastName = document.getElementById("lastName").value;
+      const dob = document.getElementById("dob").value;
+      const country = document.getElementById("country").value;
+      const gender = document.querySelectorAll("input[type=checkbox]:checked");
+      const profession = document.getElementById("profession").value;
+      const email = document.getElementById("email").value;
+      const mobile = document.getElementById("mobile").value;
+
+      if (!firstName || !lastName || !dob || !country || gender.length === 0 || !profession || !email || !mobile) 
+      {
+        alert("Please fill in all required fields.");
+        return;
+      }
+
+      let selectedGender = [];
+      gender.forEach(input => {
+        selectedGender.push(input.labels[0].textContent);
+      });
+
+      const confirmationMessage = `First Name: ${firstName}\nLast Name: ${lastName}\nDate of Birth: ${dob}\nCountry: ${country}\nGender: ${selectedGender.join(", ")}\nProfession: ${profession}\nEmail: ${email}\nMobile Number: ${mobile}`;
+
+      alert(confirmationMessage);
+      resetForm();
+    }
+  </script>
+  <footer>
+    <CENTER><h6 style="color:#fff">@2023 Customer Survey Form.All Rights Reserved | Designed By <span style="color: gold;">BINDHU</span></h6></CENTER>
+  </footer>
+</body>
+</html>
