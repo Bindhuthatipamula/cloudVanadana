@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let input = prompt("Please enter your sentence: ");
+
+function reverseSentence(input){
+    let str = input.split("").reverse().join("");
+    let str1 = str.split(" ").reverse().join(" ");
+
+    return str1;
+}
+
+console.log(reverseSentence(input));
+    </script>
+</body>
+</html>
